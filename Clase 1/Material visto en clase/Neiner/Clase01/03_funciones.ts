@@ -4,7 +4,7 @@ function Sumar(a:number, b:number):number {
 }
 
 function Saludar(nombre:string):string {
-    return "Hola " + nombre;
+    return `Nombre: ${nombre}`;
 }
 
 function Despedir():void {

@@ -6,7 +6,7 @@ var vec = [1, true, "hola"];//por default es any
 var numeros : number[] = [1,2,3];
 var otrosNumeros : Array<number> = [1,2,3];
 
-var eliminado : number = numeros.pop();
+var eliminado : number | undefined = numeros.pop();
 console.log(eliminado);
 
 numeros.push(5);
