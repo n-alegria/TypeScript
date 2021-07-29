@@ -3,8 +3,11 @@
 const APIREST : string = "http://api/";
 
 $(function(){
-    $("#btnEnviar").on("click",function(e:Event){
+    $("#btnEnviarLogin").on("click",function(e:Event){
         Login(e);
+    });
+    $("#btnRegistro").on("click", function(){
+        $(location).attr('href', APIREST + 'registro');
     });
 });
 
@@ -12,8 +15,8 @@ function Login(e:Event):void{
 
     e.preventDefault();
 
-    let correo = $("#txtCorreo").val();
-    let clave = $("#txtClave").val();
+    let correo = $("#txtCorreoLogin").val();
+    let clave = $("#txtClaveLogin").val();
     let dato : any = {
         correo : correo,
         clave : clave
@@ -26,18 +29,23 @@ function Login(e:Event):void{
         async: true
     })
     .done(function (resultado : any){
-        let mensaje:string = 'Usuario válido!';
+        
         if(resultado.exito){
-            $("#listados").html(resultado);
-        }else{
-            $("#listados").html(resultado);
+            localStorage.setItem("token", resultado.jwt);
+            $(location).attr("href", APIREST + 'principal');
+        }
+        else if(!resultado.exito){
+            $(".alert").removeClass("d-none").addClass("d-flex");
+            $(".alert p").html(resultado.mensaje);
         }
     }).fail(function (jqXHR:any, textStatus:any, errorThrown:any) {
-
-        let retorno = JSON.stringify(jqXHR.responseText);
-        $("#listados").html(retorno);
+        let datos = JSON.parse(jqXHR.responseText);
+        alert(datos.exito);
     });
 
+    $(".close").on('click', function(){
+        $(".alert").removeClass("d-flex").addClass("d-none");
+    });
     
 }
 

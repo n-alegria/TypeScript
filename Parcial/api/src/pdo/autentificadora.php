@@ -66,7 +66,7 @@ class Autentificadora
     public static function ObtenerPayLoad($token) : object
     {
         $datos = new stdClass();
-        $datos->exito = FALSE;
+        $datos->exito = false;
         $datos->payload = NULL;
         $datos->mensaje = "";
 
@@ -77,7 +77,7 @@ class Autentificadora
                                             self::$secret_key,
                                             self::$encrypt
                                         );
-            $datos->exito = TRUE;
+            $datos->exito = true;
 
         } catch (Exception $e) { 
 

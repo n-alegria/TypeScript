@@ -175,10 +175,11 @@ class Usuario{
         $retorno->status = 403;
         $retorno->jwt = null;
 
+        // $datos = Autentificadora::VerificarJWT($params);
         $usuarioVerificado = Usuario::VerificarUsuario($json);
         if($usuarioVerificado->usuario != null)
         {
-            $retorno->exito = $usuarioVerificado->exito;
+            $retorno->exito = true;
             $retorno->status = $usuarioVerificado->status;
             $retorno->mensaje = $usuarioVerificado->mensaje;
             $usuarioAuxiliar = $usuarioVerificado->usuario[0];
@@ -195,7 +196,7 @@ class Usuario{
         }
         else
         {
-            $retorno->status = $usuarioVerificado->status;
+            $retorno->status = 200;
             $retorno->mensaje = $usuarioVerificado->mensaje;
         }
 
@@ -229,7 +230,10 @@ class Usuario{
         catch(PDOException $e){
             $retorno->mensaje = "Error: {$e->getMessage()}";
         }
-        return $retorno;
+        finally{
+            return $retorno;
+        }
+        
     }
 
     // (GET) Se envía el JWT → token (en el header) y se verifica. En caso exitoso, retorna un JSON

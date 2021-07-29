@@ -2,14 +2,17 @@
 /// <reference path="../node_modules/@types/jquery/index.d.ts" />
 var APIREST = "http://api/";
 $(function () {
-    $("#btnEnviar").on("click", function (e) {
+    $("#btnEnviarLogin").on("click", function (e) {
         Login(e);
+    });
+    $("#btnRegistro").on("click", function () {
+        $(location).attr('href', APIREST + 'registro');
     });
 });
 function Login(e) {
     e.preventDefault();
-    var correo = $("#txtCorreo").val();
-    var clave = $("#txtClave").val();
+    var correo = $("#txtCorreoLogin").val();
+    var clave = $("#txtClaveLogin").val();
     var dato = {
         correo: correo,
         clave: clave
@@ -22,16 +25,20 @@ function Login(e) {
         async: true
     })
         .done(function (resultado) {
-        var mensaje = 'Usuario válido!';
         if (resultado.exito) {
-            $("#listados").html(resultado);
+            localStorage.setItem("token", resultado.jwt);
+            $(location).attr("href", APIREST + 'principal');
         }
-        else {
-            $("#listados").html(resultado);
+        else if (!resultado.exito) {
+            $(".alert").removeClass("d-none").addClass("d-flex");
+            $(".alert p").html(resultado.mensaje);
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        var retorno = JSON.stringify(jqXHR.responseText);
-        $("#listados").html(retorno);
+        var datos = JSON.parse(jqXHR.responseText);
+        alert(datos.exito);
+    });
+    $(".close").on('click', function () {
+        $(".alert").removeClass("d-flex").addClass("d-none");
     });
 }
 //# sourceMappingURL=login.js.map

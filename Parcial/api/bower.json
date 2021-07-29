@@ -9,6 +9,7 @@
   "homepage": "",
   "dependencies": {
     "bootstrap" : "4.6.0",
-    "jquery" : "*"
+    "jquery" : "*",
+    "fontawesome" : "5.15"
   }
 }

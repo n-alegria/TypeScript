@@ -22,11 +22,14 @@ $twig = Twig::create('../src/views', ['cache' => false]);
 
 $app->add(TwigMiddleware::create($app, $twig));
 
-$app->get('/principal', function(Request $request, Response $response, array $args){
+$app->get('/loginUsuarios', function(Request $request, Response $response, array $args){
     $view = Twig::fromRequest($request);
+    return $view->render($response, 'login.html');
+});
 
-    return $view->render($response, 'principal.php');
-
+$app->get('/registro', function(Request $request, Response $response, array $args){
+    $view = Twig::fromRequest($request);
+    return $view->render($response, 'registro.html');
 });
 
 

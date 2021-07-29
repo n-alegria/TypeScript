@@ -1,0 +1,61 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alegria Nestor</title>
+
+    <script type="text/javascript" src="{{base_path()}}/libs/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="{{base_path()}}/libs/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="{{base_path()}}/libs/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="{{base_path() }}/libs/fontawesome/css/all.css">
+    <!-- Funciones propias -->
+    <script type="text/javascript" src="{{base_path()}}/js/login.js"></script>
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="{{base_path()}}/css/estilos.css">
+
+</head>
+<body>  
+    <div class="container">
+        <div class="row col-lg-6 col-md-8 col-sm-10 m-auto pt-5">
+            <h1 class="titulo pb-2">Login</h1>
+            <div class="w-100">
+                <div class="p-3 rounded-5" style="background-color: lightgrey;">
+                    <form action="" >
+                        <div class="mb-3">
+                            <label for="txtCorreoLogin" class="form-label mb-3">Correo</label>
+                            <div class="d-flex">
+                                <i class="fas fa-envelope p-1 mr-2 content-center rounded border controlador"></i>
+                                <input type="email" class="form-control" placeholder="Correo" id="txtCorreoLogin">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtClaveLogin" class="form-label mb-3">Clave</label>
+                            <div class="d-flex">
+                                <i class="fas fa-key p-1 mr-2 content-center rounded border controlador"></i>
+                                <input type="password" placeholder="Clave" class="form-control" id="txtClaveLogin">
+                            </div>
+                        </div>
+                        <div class="row justify-content-around mt-3 mb-5">
+                            <button type="submit" id="btnEnviarLogin" class="col-4 btn btn-info">Enviar</button>
+                            <button type="reset" class="col-4 btn btn-warning">Limpiar</button>
+                        </div>
+                        <!-- Alerta -->
+                        <div class="alert alert-danger d-none" role="alert">
+                            <p class="flex-grow-1"></p>
+                            <i class="fas fa-times close" style="cursor: pointer"></i>
+                        </div>
+                        <!-- Fin alerta -->
+                        <div class="row mt-5">
+                            <button type="button" class="btn btn-success w-100" id="btnRegistro" >Quiero registrarme!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+</body>
+
+</html>
